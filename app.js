@@ -1,3 +1,71 @@
+// Cube 
+let x = 0
+let y = 20
+let z = 0
+let bool = true
+let interval;
+
+const cube = document.querySelector('.cube')
+
+document.querySelector('.top-x-control').addEventListener('click', (e) => {
+    cube.style.transform = `rotateX(${x += 20}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
+
+    e.preventDefault();
+})
+
+document.querySelector('.bottom-x-control').addEventListener('click', (e) => {
+    cube.style.transform = `rotateX(${x -= 20}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
+
+    e.preventDefault();
+})
+
+document.querySelector('.left-y-control').addEventListener('click', (e) => {
+    cube.style.transform = `rotateX(${x}deg) rotateY(${y -= 20}deg) rotateZ(${z}deg) `;
+
+    e.preventDefault();
+})
+
+document.querySelector('.right-y-control').addEventListener('click', (e) => {
+    cube.style.transform = `rotateX(${x}deg) rotateY(${y += 20}deg) rotateZ(${z}deg) `;
+
+    e.preventDefault();
+})
+
+document.querySelector('.top-z-control').addEventListener('click', (e) => {
+    cube.style.transform = `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z -= 20}deg) `;
+
+    e.preventDefault();
+})
+
+document.querySelector('.bottom-z-control').addEventListener('click', () => {
+    cube.style.transform = `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z += 20}deg) `;
+
+    e.preventDefault();
+})
+
+const playPause = () => {
+    if(bool) {
+        interval = setInterval(() => {
+            cube.style.transform = `rotateX(${x}deg) rotateY(${y++}deg) rotateZ(${z}deg)`
+        }, 100);
+    } else {
+        clearInterval(interval);
+    }
+}
+
+playPause();
+
+document.querySelector('.controls').addEventListener('mouseover', () => {
+    bool = false
+    playPause()
+})
+
+document.querySelector('.controls').addEventListener('mouseout', () => {
+    bool = true
+    playPause()
+})
+
+
 // Slideshow
 const slideshowDivs = () => {
   for(let i = 1; i <=5; i++) {
@@ -34,3 +102,5 @@ const slideshow = () => {
 }
 
 slideshow();
+
+
